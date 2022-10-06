@@ -1,18 +1,18 @@
 import React from 'react';
 
-import Cell from './Cell.js';
+import Maze from './components/Maze';
+import InputForm from './components/InputForm';
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-export default function Maze() {
-	// state init
-	const mazeSize = 5;
+export default function App() {
+	const [mazeSize, updateMazeSize] = React.useState(5);
 	const [maze, updateMaze] = React.useState([
-		[0, 0, 0, 1, 0],
-		[1, 0, 0, 0, 0],
-		[0, 0, 1, 0, 0],
-		[0, 1, 0, 0, 0],
-		[1, 0, 1, 1, 0],
+		[0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0],
 	]);
 
 	const isSafe = function (maze, n, x, y) {
@@ -42,28 +42,18 @@ export default function Maze() {
 		return false;
 	};
 
-	// event handlers
-
-	const btnOnClick = async function () {
+	const startVis = async function () {
 		await ratInAMaze(maze, mazeSize, 0, 0);
 	};
 
 	return (
-		<div className="maze">
-			{maze.map((row, rowNum) => (
-				<div className="row" key={rowNum}>
-					{row.map((cell, cellNum) => (
-						<Cell
-							key={`${rowNum}${cellNum}`}
-							state={maze[rowNum][cellNum]}
-							y={rowNum}
-							x={cellNum}
-							mazeSize={mazeSize}
-						/>
-					))}
-				</div>
-			))}
-			<button onClick={btnOnClick}>Click to solve</button>
+		<div className="main">
+			<InputForm
+				updateMazeSize={updateMazeSize}
+				updateMaze={updateMaze}
+				startVis={startVis}
+			/>
+			<Maze mazeSize={mazeSize} maze={maze} updateMaze={updateMaze} />
 		</div>
 	);
 }

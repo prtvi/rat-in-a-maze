@@ -35,11 +35,24 @@ function getCellDOM(x, y, mazeSize) {
 }
 
 export default function Cell(props) {
-	const { state, y, x, mazeSize } = props;
-	// const [currState, updateState] = React.useState(state);
+	const { state, y, x, mazeSize, updateMaze } = props;
+
+	const onClickAddBarrier = function () {
+		if (y === 0 && x === 0) return;
+		if (y === mazeSize - 1 && x === mazeSize - 1) return;
+
+		updateMaze(curr => {
+			const updatedMaze = curr.slice();
+
+			if (updatedMaze[y][x] === 1) updatedMaze[y][x] = 0;
+			else if (updatedMaze[y][x] === 0) updatedMaze[y][x] = 1;
+
+			return updatedMaze;
+		});
+	};
 
 	return (
-		<div className="cell" style={getStyle(state)}>
+		<div className="cell" style={getStyle(state)} onClick={onClickAddBarrier}>
 			{getCellDOM(x, y, mazeSize)}
 		</div>
 	);
