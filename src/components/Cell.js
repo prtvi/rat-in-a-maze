@@ -22,7 +22,7 @@ function getCellDOM(x, y, mazeSize) {
 	let cellDom;
 
 	if (y === 0 && x === 0) cellDom = <img src="rat.png" alt="rat" />;
-	else if (y + 1 === mazeSize && x + 1 === mazeSize)
+	else if (y === mazeSize - 1 && x === mazeSize - 1)
 		cellDom = <img src="cheese.png" alt="cheese" />;
 	else
 		cellDom = (

@@ -2,16 +2,17 @@ import React from 'react';
 
 import Cell from './Cell.js';
 
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 export default function Maze() {
 	// state init
 	const mazeSize = 5;
-
 	const [maze, updateMaze] = React.useState([
 		[0, 0, 0, 1, 0],
-		[0, 0, 0, 0, 0],
+		[1, 0, 0, 0, 0],
 		[0, 0, 1, 0, 0],
 		[0, 1, 0, 0, 0],
-		[1, 0, 0, 0, 0],
+		[1, 0, 1, 1, 0],
 	]);
 
 	const isSafe = function (maze, n, x, y) {
@@ -19,19 +20,22 @@ export default function Maze() {
 		return false;
 	};
 
-	const ratInAMaze = function (maze, n, x, y, solMaze) {
+	const ratInAMaze = async function (maze, n, x, y) {
 		if (x === n - 1 && y === n - 1) {
-			solMaze[x][y] = 2;
+			maze[x][y] = 2;
 			return true;
 		}
 
+		await delay(100);
+		updateMaze(maze => maze.slice());
+
 		if (isSafe(maze, n, x, y)) {
-			solMaze[x][y] = 2;
+			maze[x][y] = 2;
 
-			if (ratInAMaze(maze, n, x + 1, y, solMaze)) return true;
-			if (ratInAMaze(maze, n, x, y + 1, solMaze)) return true;
+			if (await ratInAMaze(maze, n, x + 1, y)) return true;
+			if (await ratInAMaze(maze, n, x, y + 1)) return true;
 
-			solMaze[x][y] = 0;
+			maze[x][y] = 0;
 			return false;
 		}
 
@@ -40,11 +44,8 @@ export default function Maze() {
 
 	// event handlers
 
-	const btnOnClick = function () {
-		const solMaze = maze.slice();
-		ratInAMaze(maze, mazeSize, 0, 0, solMaze);
-
-		updateMaze(maze => solMaze);
+	const btnOnClick = async function () {
+		await ratInAMaze(maze, mazeSize, 0, 0);
 	};
 
 	return (
