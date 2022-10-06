@@ -1,45 +1,46 @@
 import React from 'react';
 
-// start, end, open, close, foundPath
-// const states = [-1, 1, 0, 7, 2]
+// open, close, foundPath
+// const states = [0, 1, 2]
+
+function getStyle(state) {
+	if (state === 1)
+		return {
+			backgroundColor: 'red',
+		};
+	else if (state === 0)
+		return {
+			backgroundColor: 'white',
+		};
+	else if (state === 2)
+		return {
+			backgroundColor: 'green',
+		};
+}
+
+function getCellDOM(x, y, mazeSize) {
+	let cellDom;
+
+	if (y === 0 && x === 0) cellDom = <img src="rat.png" alt="rat" />;
+	else if (y + 1 === mazeSize && x + 1 === mazeSize)
+		cellDom = <img src="cheese.png" alt="cheese" />;
+	else
+		cellDom = (
+			<p>
+				({y}, {x})
+			</p>
+		);
+
+	return cellDom;
+}
 
 export default function Cell(props) {
-	const { state, y, x } = props;
-	// const [state, updateState] = React.useState(props.state);
-
-	function getStyle(state) {
-		if (state === -1)
-			return {
-				backgroundColor: 'brown',
-			};
-		else if (state === 1)
-			return {
-				backgroundColor: 'orange',
-			};
-		else if (state === 0)
-			return {
-				backgroundColor: 'white',
-			};
-		else if (state === 7)
-			return {
-				backgroundColor: 'red',
-			};
-	}
-
-	function getImg(state) {
-		if (state === -1) return <img src="rat.png" alt="rat" />;
-		else if (state === 1) return <img src="cheese.png" alt="cheese" />;
-	}
+	const { state, y, x, mazeSize } = props;
+	// const [currState, updateState] = React.useState(state);
 
 	return (
 		<div className="cell" style={getStyle(state)}>
-			{state === -1 || state === 1 ? (
-				getImg(state)
-			) : (
-				<p>
-					({y}, {x})
-				</p>
-			)}
+			{getCellDOM(x, y, mazeSize)}
 		</div>
 	);
 }
