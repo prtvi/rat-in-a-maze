@@ -1,18 +1,82 @@
 * {
 	margin: 0;
 	padding: 0;
+	font-family: 'Poppins', sans-serif;
 }
 
-.cell {
-	height: 75px;
-	width: 75px;
+h1 {
+	text-align: center;
+	margin-top: 40px;
+	margin-bottom: 10px;
+}
+
+/* INPUT FORM */
+
+.input-form {
+	text-align: center;
+	margin: 10px 0 10px 0;
 	padding: 10px;
-	margin: 2px;
-	background-color: white;
-	display: inline-block;
+}
+
+.form-item {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.form-item label {
+	margin-right: 15px;
+}
+
+.form-item input {
+	width: 60px;
+}
+
+.form-item input[type='range'] {
+	width: 120px;
+}
+
+.form-item span {
+	margin-left: 10px;
+}
+
+.btn {
+	margin: 10px;
+	padding: 5px;
+	border: none;
+	border-radius: 3px;
+	border: 1px solid gray;
+}
+
+.btn:hover {
+	cursor: pointer;
 	border: 1px solid black;
 }
 
+/* MAZE */
+
+.maze {
+	text-align: center;
+}
+
 .row {
+	display: inline-block;
+}
+
+.cell {
+	height: 60px;
+	width: 60px;
+	padding: 10px;
+	margin: 2px 5px 2px 5px;
+	background-color: white;
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.cell img {
+	height: 50px;
+	width: 50px;
 	display: block;
+	float: left;
 }

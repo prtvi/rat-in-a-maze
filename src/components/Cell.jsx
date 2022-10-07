@@ -24,12 +24,6 @@ function getCellDOM(x, y, mazeSize) {
 	if (y === 0 && x === 0) cellDom = <img src="rat.png" alt="rat" />;
 	else if (y === mazeSize - 1 && x === mazeSize - 1)
 		cellDom = <img src="cheese.png" alt="cheese" />;
-	else
-		cellDom = (
-			<p>
-				({y}, {x})
-			</p>
-		);
 
 	return cellDom;
 }

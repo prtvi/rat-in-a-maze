@@ -6,6 +6,7 @@ import InputForm from './components/InputForm';
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 export default function App() {
+	const [speed, setSpeed] = React.useState(300);
 	const [mazeSize, updateMazeSize] = React.useState(5);
 	const [maze, updateMaze] = React.useState([
 		[0, 0, 0, 0, 0],
@@ -26,7 +27,7 @@ export default function App() {
 			return true;
 		}
 
-		await delay(100);
+		await delay(speed);
 		updateMaze(maze => maze.slice());
 
 		if (isSafe(maze, n, x, y)) {
@@ -48,10 +49,14 @@ export default function App() {
 
 	return (
 		<div className="main">
+			<header>
+				<h1>Rat in a Maze - Visualization</h1>
+			</header>
 			<InputForm
 				updateMazeSize={updateMazeSize}
 				updateMaze={updateMaze}
 				startVis={startVis}
+				setSpeed={setSpeed}
 			/>
 			<Maze mazeSize={mazeSize} maze={maze} updateMaze={updateMaze} />
 		</div>
