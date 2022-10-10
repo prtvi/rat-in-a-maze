@@ -40,9 +40,8 @@ export default function InputForm(props) {
 	return (
 		<div className="input-form">
 			<div className="form-item">
-				<label className="form-item-label">Enter the maze size:</label>
+				<label>Enter the maze size:</label>
 				<input
-					className="form-item-input"
 					type="number"
 					step="1"
 					min={4}
@@ -56,9 +55,8 @@ export default function InputForm(props) {
 			</div>
 
 			<div className="form-item">
-				<label className="form-item-label">Speed:</label>
+				<label>Speed:</label>
 				<input
-					className="form-item-input"
 					type="range"
 					step="100"
 					min={100}
@@ -72,14 +70,14 @@ export default function InputForm(props) {
 
 			<div className="form-item">
 				<button
-					className="btn form-item-input"
+					className="btn"
 					onClick={btnStart}
 					disabled={ifRunning ? true : false}
 				>
 					Start
 				</button>
 
-				<button className="btn form-item-input" onClick={btnReload}>
+				<button className="btn" onClick={btnReload}>
 					Reload
 				</button>
 			</div>

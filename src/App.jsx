@@ -45,12 +45,23 @@ export default function App() {
 
 	const startVis = async function () {
 		await ratInAMaze(maze, mazeSize, 0, 0);
+
+		await delay(300);
+		updateMaze(curr => {
+			const updatedMaze = curr.slice();
+
+			updatedMaze[0][0] = 0;
+			updatedMaze[mazeSize - 1][mazeSize - 1] = 0;
+
+			return updatedMaze;
+		});
 	};
 
 	return (
 		<div className="main">
 			<header>
 				<h1>Rat in a Maze - Visualization</h1>
+				<p>Click the boxes to add barriers</p>
 			</header>
 			<InputForm
 				updateMazeSize={updateMazeSize}

@@ -6,24 +6,33 @@ import React from 'react';
 function getStyle(state) {
 	if (state === 1)
 		return {
-			backgroundColor: 'red',
+			backgroundColor: '#f00',
 		};
 	else if (state === 0)
 		return {
-			backgroundColor: 'white',
+			backgroundColor: '#fff',
 		};
 	else if (state === 2)
 		return {
-			backgroundColor: 'green',
+			backgroundColor: '#0f0',
 		};
 }
 
 function getCellDOM(x, y, mazeSize) {
 	let cellDom;
 
-	if (y === 0 && x === 0) cellDom = <img src="rat.png" alt="rat" />;
+	if (y === 0 && x === 0)
+		cellDom = (
+			<div className="img-container">
+				<img src="rat.png" alt="rat" />
+			</div>
+		);
 	else if (y === mazeSize - 1 && x === mazeSize - 1)
-		cellDom = <img src="cheese.png" alt="cheese" />;
+		cellDom = (
+			<div className="img-container">
+				<img src="cheese.png" alt="cheese" />
+			</div>
+		);
 
 	return cellDom;
 }
