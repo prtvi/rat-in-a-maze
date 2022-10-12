@@ -1,13 +1,26 @@
 :root {
-	--color-close: #f00;
-	--color-open: #fff;
-	--color-path: #0f0;
+	--color-close: #f05454;
+	--color-open: #e8e8e8;
+	--color-temp-path: #3cc4fe;
+	--color-path: #3ccf4e;
+
+	--color-bg: #100f0f;
+	--color-text: #f1f1f1;
+	--color-subtext: #f3f9fb;
+
+	--color-btn: #4e4e4e;
+	--color-btn-border: #808080;
 }
 
 * {
 	margin: 0;
 	padding: 0;
 	font-family: 'Poppins', sans-serif;
+	color: var(--color-text);
+}
+
+body {
+	background-color: var(--color-bg);
 }
 
 header {
@@ -42,6 +55,7 @@ header h1 {
 	width: 60px;
 	margin-left: 15px;
 	margin-right: 10px;
+	color: #000;
 }
 
 .form-item input[type='range'] {
@@ -49,19 +63,24 @@ header h1 {
 }
 
 .form-item span {
-	color: #3c3c3c;
+	color: var(--color-subtext);
 }
 
 .btn {
 	margin: 10px;
 	padding: 5px;
-	border-radius: 3px;
-	border: 1px solid #808080;
+	border-radius: 5px;
+	background-color: var(--color-btn);
+	border: 1px solid var(--color-btn-border);
 }
 
 .btn:hover {
 	cursor: pointer;
-	border: 1px solid #000;
+	border: 1px solid var(--color-subtext);
+}
+
+.btn:disabled {
+	border: 1px solid var(--color-btn-border);
 }
 
 /* MAZE */
@@ -71,7 +90,7 @@ header h1 {
 }
 
 .row {
-	display: inline-block;
+	display: block;
 }
 
 .cell {
@@ -79,15 +98,16 @@ header h1 {
 	width: 60px;
 	padding: 5px;
 	margin: 2px 5px 2px 5px;
-	background-color: var(--color-open);
 	display: inline-block;
-	border: 1px solid #808080;
+	background-color: var(--color-open);
+	border: 1px solid var(--color-open);
 	border-radius: 3px;
 	cursor: pointer;
 }
 
-.cell:hover {
-	border: 1px solid #000;
+.cell:hover,
+.cell.barrier {
+	border: 1px solid var(--color-close);
 }
 
 .img-container {

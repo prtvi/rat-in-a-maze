@@ -1,20 +1,37 @@
 import React from 'react';
 
-// open, close, foundPath
-// const states = [0, 1, 2]
+// open, close, tempPath, path
+// const states = [0, 1, 2, 3]
+
+const colorClose = '#f05454';
+const colorOpen = '#e8e8e8';
+const colorTempPath = '#3cc4fe';
+const colorPath = '#3ccf4e';
 
 function getStyle(state) {
 	if (state === 1)
+		// state close
 		return {
-			backgroundColor: '#f00',
+			backgroundColor: colorClose,
+			// border: `1px solid ${colorClose}`,
 		};
 	else if (state === 0)
+		// state open
 		return {
-			backgroundColor: '#fff',
+			backgroundColor: colorOpen,
+			// border: `1px solid ${colorOpen}`,
 		};
 	else if (state === 2)
+		// state temp path
 		return {
-			backgroundColor: '#0f0',
+			backgroundColor: colorTempPath,
+			border: `1px solid ${colorTempPath}`,
+		};
+	else if (state === 3)
+		// state path
+		return {
+			backgroundColor: colorPath,
+			border: `1px solid ${colorPath}`,
 		};
 }
 
@@ -40,9 +57,11 @@ function getCellDOM(x, y, mazeSize) {
 export default function Cell(props) {
 	const { state, y, x, mazeSize, updateMaze } = props;
 
-	const onClickAddBarrier = function () {
+	const onClickAddBarrier = function (e) {
 		if (y === 0 && x === 0) return;
 		if (y === mazeSize - 1 && x === mazeSize - 1) return;
+
+		e.target.classList.toggle('barrier');
 
 		updateMaze(curr => {
 			const updatedMaze = curr.slice();

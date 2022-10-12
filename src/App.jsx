@@ -6,7 +6,7 @@ import InputForm from './components/InputForm';
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 export default function App() {
-	const [speed, setSpeed] = React.useState(300);
+	const [speed, setSpeed] = React.useState(200);
 	const [mazeSize, updateMazeSize] = React.useState(5);
 	const [maze, updateMaze] = React.useState([
 		[0, 0, 0, 0, 0],
@@ -50,8 +50,16 @@ export default function App() {
 		updateMaze(curr => {
 			const updatedMaze = curr.slice();
 
-			updatedMaze[0][0] = 0;
-			updatedMaze[mazeSize - 1][mazeSize - 1] = 0;
+			// change the color from blue to green
+			for (let i = 0; i < updatedMaze.length; i++) {
+				for (let j = 0; j < updatedMaze[i].length; j++) {
+					if (updatedMaze[i][j] === 2) updatedMaze[i][j] = 3;
+				}
+			}
+
+			// change the start and end into blue
+			updatedMaze[0][0] = 2;
+			updatedMaze[mazeSize - 1][mazeSize - 1] = 2;
 
 			return updatedMaze;
 		});
