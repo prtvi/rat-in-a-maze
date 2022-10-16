@@ -94,8 +94,8 @@ header h1 {
 }
 
 .cell {
-	height: 5vw;
-	width: 5vw;
+	height: 35px;
+	width: 35px;
 	padding: 5px;
 	margin: 2px 5px 2px 5px;
 	display: inline-block;
