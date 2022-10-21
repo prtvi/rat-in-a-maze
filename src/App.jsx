@@ -2,6 +2,7 @@ import React from 'react';
 
 import Maze from './components/Maze';
 import InputForm from './components/InputForm';
+import Legend from './components/Legend';
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -57,9 +58,9 @@ export default function App() {
 				}
 			}
 
-			// change the start and end into blue
-			updatedMaze[0][0] = 2;
-			updatedMaze[mazeSize - 1][mazeSize - 1] = 2;
+			// change the start and end into yellow
+			updatedMaze[0][0] = 4;
+			updatedMaze[mazeSize - 1][mazeSize - 1] = 4;
 
 			return updatedMaze;
 		});
@@ -78,6 +79,7 @@ export default function App() {
 				setSpeed={setSpeed}
 			/>
 			<Maze mazeSize={mazeSize} maze={maze} updateMaze={updateMaze} />
+			<Legend />
 		</div>
 	);
 }

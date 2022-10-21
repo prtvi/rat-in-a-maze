@@ -3,6 +3,7 @@
 	--color-open: #e8e8e8;
 	--color-temp-path: #3cc4fe;
 	--color-path: #3ccf4e;
+	--color-face: #ffff00;
 
 	--color-bg: #100f0f;
 	--color-text: #f1f1f1;
@@ -125,4 +126,48 @@ header h1 {
 	width: 80%;
 	margin: auto;
 	display: block;
+}
+
+details {
+	margin-top: 50px;
+	padding-left: 50px;
+	padding-right: 50px;
+	cursor: pointer;
+}
+
+.legend {
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.legend-cell {
+	margin: 3px;
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.legend-cell div {
+	width: 18px;
+	height: 18px;
+	border-radius: 1px;
+	float: left;
+}
+
+.legend-cell span {
+	font-size: 12px;
+	margin-left: 10px;
+	width: 90%;
+}
+
+.info {
+	margin-top: 30px;
+	margin-bottom: 50px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+.info p {
+	font-size: 13px;
 }

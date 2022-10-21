@@ -8,7 +8,7 @@ The rat in a maze is a very famous algorithm where you have a rat at some positi
 
 The algorithm uses backtracking to avoid paths that would not lead to the destination.
 
-This visualization is built in way that the rat can only make new moves in only _down_ and _right_ directions.
+This algorithm is built in way that the rat can only make new moves in only _down_ and _right_ directions.
 
 ## About the project
 

@@ -1,55 +1,61 @@
 import React from 'react';
 
-// open, close, tempPath, path
-// const states = [0, 1, 2, 3]
+// open, closed, tempPath, path, face
+// const states = [0, 1, 2, 3, 4]
 
-const colorClose = '#f05454';
-const colorOpen = '#e8e8e8';
-const colorTempPath = '#3cc4fe';
-const colorPath = '#3ccf4e';
+export const COLOR_CLOSED = '#f05454';
+export const COLOR_OPEN = '#e8e8e8';
+export const COLOR_TEMP_PATH = '#3cc4fe';
+export const COLOR_PATH = '#3ccf4e';
+export const COLOR_FACE = '#ffff00';
 
 function getStyle(state, mazeSize) {
 	const windowWidth = window.innerWidth;
 	const windowHeight = window.innerHeight;
 
-	let finalWidthHeight = 0;
+	let cellSize = 0;
+	const m = 2.5;
 
-	if (windowWidth > windowHeight) 
-		finalWidthHeight = windowHeight / (mazeSize * 2.5);
-	else if (windowWidth <= windowHeight) 
-		finalWidthHeight = windowWidth / (mazeSize * 2.5);
-	
-	if (state === 1)
-		// state close
-		return {
-			backgroundColor: colorClose,
-			// border: `1px solid ${colorClose}`,
-			width: finalWidthHeight,
-			height: finalWidthHeight,
-		};
-	else if (state === 0)
+	if (windowWidth > windowHeight) cellSize = windowHeight / (mazeSize * m);
+	else if (windowWidth <= windowHeight) cellSize = windowWidth / (mazeSize * m);
+
+	if (state === 0)
 		// state open
 		return {
-			backgroundColor: colorOpen,
-			// border: `1px solid ${colorOpen}`,
-			width: finalWidthHeight,
-			height: finalWidthHeight,
+			backgroundColor: COLOR_OPEN,
+			width: cellSize,
+			height: cellSize,
+		};
+	else if (state === 1)
+		// state close
+		return {
+			backgroundColor: COLOR_CLOSED,
+			width: cellSize,
+			height: cellSize,
 		};
 	else if (state === 2)
 		// state temp path
 		return {
-			backgroundColor: colorTempPath,
-			border: `1px solid ${colorTempPath}`,
-			width: finalWidthHeight,
-			height: finalWidthHeight,
+			backgroundColor: COLOR_TEMP_PATH,
+			border: `1px solid ${COLOR_TEMP_PATH}`,
+			width: cellSize,
+			height: cellSize,
 		};
 	else if (state === 3)
 		// state path
 		return {
-			backgroundColor: colorPath,
-			border: `1px solid ${colorPath}`,
-			width: finalWidthHeight,
-			height: finalWidthHeight,
+			backgroundColor: COLOR_PATH,
+			border: `1px solid ${COLOR_PATH}`,
+			width: cellSize,
+			height: cellSize,
+		};
+	else if (state === 4)
+		// state face
+		return {
+			backgroundColor: COLOR_FACE,
+			border: `1px solid ${COLOR_FACE}`,
+			width: cellSize,
+			height: cellSize,
 		};
 }
 
@@ -92,7 +98,11 @@ export default function Cell(props) {
 	};
 
 	return (
-		<div className="cell" style={getStyle(state, mazeSize)} onClick={onClickAddBarrier}>
+		<div
+			className="cell"
+			style={getStyle(state, mazeSize)}
+			onClick={onClickAddBarrier}
+		>
 			{getCellDOM(x, y, mazeSize)}
 		</div>
 	);
