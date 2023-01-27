@@ -1,6 +1,6 @@
 # React - Rat in a maze visualization
 
-[Click here to view the application](https://react-rat-in-a-maze.herokuapp.com/)
+Check out the link in the repository details to view the application
 
 ## About the algorithm
 
