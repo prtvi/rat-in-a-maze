@@ -1,5 +1,7 @@
 # React - Rat in a maze visualization
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8a4a242e-0a4a-418d-a68a-0e6d7154d7e1/deploy-status)](https://app.netlify.com/sites/rat-in-a-maze-visualisation/deploys)
+
 Check out the link in the repository details to view the application
 
 ## About the algorithm
