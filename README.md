@@ -37,3 +37,7 @@ After which you click on the boxes to add them as barriers for the rat. Then cli
 3: The end result
 
 <img src="out/3.png" alt="end result" width="300"/>
+
+## Other links
+
+Click [here](https://prtvi.github.io/allprojects.html) to check out my other projects
